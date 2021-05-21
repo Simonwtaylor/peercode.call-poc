@@ -2,13 +2,15 @@ const socket = io('/');
 const videoGrid = document.getElementById('video-grid');
 
 const myPeer = new Peer(undefined, {
-  host: 'https://peercode-call-poc-peer.herokuapp.com',//host: process.env.PEER_HOST || '/',
-  port: '9000',//port: process.env.PEER_PORT || '3001',
+  host: 'peercode-call-poc-peer.herokuapp.com',
+  port: '443',
+  secure: true,
 });
-const myVideo = document.createElement('video')
-myVideo.muted = true;
-const peers = {};
 
+const myVideo = document.createElement('video');
+myVideo.muted = true;
+
+const peers = {};
 
 navigator.mediaDevices.getUserMedia({
   video: true,
